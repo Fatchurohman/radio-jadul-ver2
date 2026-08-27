@@ -339,9 +339,29 @@ body {
     justify-content: center;
 }
 
+/* Hub / Roda Kaset dengan overflow hidden untuk memotong garis yang keluar */
+.hub-overlay {
+    width: 32px;
+    height: 32px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* WAJIB ADA: Supaya garis ruji tidak meluber keluar */
+}
+
 /* Posisi Roda Kaset Presisi di Tengah Lubang Kaset */
 .left-hub-pos { left: 36%; }
 .right-hub-pos { right: 36%; }
+
+.hub-overlay.spinning {
+    animation: spinReel 2s linear infinite;
+}
 
 @keyframes spinReel {
     0% { transform: translateY(-50%) rotate(0deg); }
