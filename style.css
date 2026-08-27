@@ -330,24 +330,15 @@ body {
     justify-content: center;
 }
 
-/* Pembungkus Luar: Mengunci Posisi Pas di Lubang Kaset */
+/* Hub / Roda Kaset Langsung Padu & Presisi */
 .hub-overlay {
-    width: 28px;
-    height: 28px;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.left-hub-pos { left: 36%; }
-.right-hub-pos { right: 36%; }
-
-/* Bagian Roda Dalam yang Berputar */
-.reel-wheel {
-    width: 100%;
-    height: 100%;
+    width: 24px;
+    height: 24px;
     border: 2px solid #ccc;
     border-radius: 50%;
+    position: absolute;
+    top: 47%;
+    transform: translateY(-50%);
     background: rgba(0,0,0,0.9);
     display: flex;
     align-items: center;
@@ -355,14 +346,18 @@ body {
     overflow: hidden;
 }
 
-/* Animasi Putar Murni di Dalam Elemen Anak */
-.hub-overlay.spinning .reel-wheel {
+/* Posisi Roda Kiri dan Kanan */
+.left-hub-pos { left: 41.5%; }
+.right-hub-pos { right: 41.5%; }
+
+/* Animasi Putar Langsung Aktif Saat Kelas .spinning Masuk */
+.hub-overlay.spinning {
     animation: spinReel 2s linear infinite;
 }
 
 @keyframes spinReel {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% { transform: translateY(-50%) rotate(0deg); }
+    100% { transform: translateY(-50%) rotate(360deg); }
 }
 
 .spoke {
@@ -373,6 +368,7 @@ body {
 }
 .s2 { transform: rotate(60deg); }
 .s3 { transform: rotate(120deg); }
+
 
 .label-overlay {
     position: absolute;
