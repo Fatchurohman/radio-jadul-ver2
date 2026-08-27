@@ -18,11 +18,27 @@ const btnBoost = document.getElementById('btnBoost');
 const btnBass = document.getElementById('btnBass');
 
 let playlist = [];
+let playlistNames = [];
 let currentIndex = 0;
 
 let audioCtx, source, gainNode, bassFilter, analyser, dataArray;
 let isBoostOn = false;
 let isBassOn = false;
+
+window.addEventListener('DOMContentLoaded', () => {
+    const savedNames = localStorage.getItem('fatur_playlist_names');
+    const savedIndex = localStorage.getItem('fatur_current_index');
+    
+    if (savedNames) {
+        try {
+            playlistNames = JSON.parse(savedNames);
+            currentIndex = savedIndex ? parseInt(savedIndex) : 0;
+            renderSavedPlaylist();
+        } catch (e) {
+            console.log("Gagal memuat memori playlist");
+        }
+    }
+});
 
 fileInput.addEventListener('change', (e) => {
     try {
@@ -32,7 +48,12 @@ fileInput.addEventListener('change', (e) => {
         if (audioFiles.length === 0) return;
 
         playlist = audioFiles;
+        playlistNames = audioFiles.map(f => f.name);
         currentIndex = 0;
+
+        localStorage.setItem('fatur_playlist_names', JSON.stringify(playlistNames));
+        localStorage.setItem('fatur_current_index', currentIndex);
+
         renderPlaylist();
         loadSong(currentIndex);
         playAudio();
@@ -52,6 +73,7 @@ function renderPlaylist() {
             
             li.addEventListener('click', () => {
                 currentIndex = index;
+                localStorage.setItem('fatur_current_index', currentIndex);
                 loadSong(currentIndex);
                 playAudio();
             });
@@ -59,6 +81,31 @@ function renderPlaylist() {
         });
     } catch (err) {
         console.error("Error rendering playlist:", err);
+    }
+}
+
+function renderSavedPlaylist() {
+    try {
+        playlistView.innerHTML = '';
+        playlistNames.forEach((name, index) => {
+            const li = document.createElement('li');
+            const cleanName = name.replace(/\.[^/.]+$/, "");
+            li.textContent = `${index + 1}. ${cleanName}`;
+            if (index === currentIndex) li.classList.add('playing');
+            
+            li.addEventListener('click', () => {
+                currentIndex = index;
+                localStorage.setItem('fatur_current_index', currentIndex);
+                songTitle.textContent = cleanName;
+                alert("Silakan klik [📁 FOLDER] sekali lagi untuk menghubungkan ulang akses file audio lokal perangkat Anda.");
+            });
+            playlistView.appendChild(li);
+        });
+        if (playlistNames.length > 0) {
+            songTitle.textContent = playlistNames[currentIndex].replace(/\.[^/.]+$/, "");
+        }
+    } catch (err) {
+        console.error("Error rendering saved playlist:", err);
     }
 }
 
@@ -82,7 +129,12 @@ function loadSong(index) {
 }
 
 function playAudio() {
-    if (!audio.src) return;
+    if (!audio.src) {
+        if (playlistNames.length > 0) {
+            alert("Silakan pilih ulang folder lagu untuk memutar audio.");
+        }
+        return;
+    }
     
     initWebAudio();
     if (audioCtx && audioCtx.state === 'suspended') {
@@ -111,6 +163,7 @@ btnPause.addEventListener('click', pauseAudio);
 btnNext.addEventListener('click', () => {
     if (!playlist || playlist.length === 0) return;
     currentIndex = (currentIndex + 1) % playlist.length;
+    localStorage.setItem('fatur_current_index', currentIndex);
     loadSong(currentIndex);
     playAudio();
 });
@@ -118,6 +171,7 @@ btnNext.addEventListener('click', () => {
 btnPrev.addEventListener('click', () => {
     if (!playlist || playlist.length === 0) return;
     currentIndex = (currentIndex - 1 + playlist.length) % playlist.length;
+    localStorage.setItem('fatur_current_index', currentIndex);
     loadSong(currentIndex);
     playAudio();
 });
@@ -224,4 +278,3 @@ window.addEventListener('pointermove', (e) => {
 window.addEventListener('pointerup', () => { 
     isDragging = false; 
 });
-
