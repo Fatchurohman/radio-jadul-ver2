@@ -5,115 +5,151 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>60s Vintage Tape - fatur62</title>
     <link rel="stylesheet" href="style.css">
-    <!-- PWA Manifest untuk Aktifkan Tombol Instal di Chrome -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#7a4623">
 </head>
 <body>
 
     <div class="vintage-player">
-        <!-- Status Bar -->
+        <!-- Baut Sudut Atas -->
+        <div class="screw top-left"></div>
+        <div class="screw top-right"></div>
+
+        <!-- Status Bar Atas -->
         <div class="top-bar">
             <span class="brand-tag">✦ ANALOG AUDIO SYSTEM ✦</span>
-            <span class="dev-tag">developer: <i>fatur62</i></span>
+            <span class="dev-tag">DEV: <i>fatur62</i></span>
         </div>
 
-        <!-- Radio Display (Seekbar) -->
-        <div class="radio-display" id="freqDisplay">
-            <div class="dial-scale">
-                <span class="mhz">FM 88..90..94..98..102..108 MHz</span>
-                <div class="khz">AM 550..700..900..1200..1600 kHz</div>
+        <!-- Bagian Atas: Radio Display & Kenop Kanan Atas -->
+        <div class="header-section">
+            <div class="radio-display" id="freqDisplay">
+                <div class="dial-scale">
+                    <span class="mhz">FM &nbsp;&nbsp; 88 &nbsp;&nbsp; 102 &nbsp;&nbsp; 108 &nbsp; MHz</span>
+                    <div class="khz">AM &nbsp; 550 &nbsp; 700 &nbsp; 1600 &nbsp;... kHz</div>
+                </div>
+                <div class="dial-needle" id="dialNeedle"></div>
+                <div class="radio-light" id="radioLight"></div>
             </div>
-            <div class="dial-needle" id="dialNeedle"></div>
-            <div class="radio-light" id="radioLight"></div>
-        </div>
-
-        <!-- Middle Section (Kaset Transparan Realistis + VU Meter) -->
-        <div class="middle-section">
-            <!-- VU Meter -->
-            <div class="vu-meter">
-                <div class="vu-label">S-METER</div>
-                <div class="vu-dial">
-                    <div class="vu-needle" id="vuNeedle"></div>
+            <div class="top-knob-container">
+                <div class="metal-knob small-knob">
+                    <div class="knob-cap"></div>
                 </div>
             </div>
+        </div>
 
-            <!-- Frame Kaset Transparan PNG -->
-            <div class="cassette-deck">
-                <div class="real-cassette-frame" id="reelsArea">
-                    
-                    <!-- Layer Roda Gerigi Berputar di Belakang Gambar Transparan -->
-                    <div class="hub-overlay left-hub-pos" id="leftReel">
-                        <div class="spoke s1"></div>
-                        <div class="spoke s2"></div>
-                        <div class="spoke s3"></div>
-                    </div>
-
-                    <div class="hub-overlay right-hub-pos" id="rightReel">
-                        <div class="spoke s1"></div>
-                        <div class="spoke s2"></div>
-                        <div class="spoke s3"></div>
-                    </div>
-
-                    <!-- Overlay Running Text Pas di Atas Stiker Putih -->
-                    <div class="label-overlay">
-                        <div class="ticker-wrapper">
-                            <div class="clean-running-title" id="songTitle">Tidak Ada Lagu (Pilih File)</div>
+        <!-- Bagian Tengah Utama (Split Kiri & Kanan) -->
+        <div class="main-body-grid">
+            
+            <!-- Kolom Kiri: VU Meter, Label, Saklar, Playlist -->
+            <div class="left-control-panel">
+                <!-- Baris Atas Kiri: VU Meter & Brand Plate -->
+                <div class="left-top-row">
+                    <div class="vu-meter">
+                        <div class="vu-dial">
+                            <div class="vu-needle" id="vuNeedle"></div>
                         </div>
                     </div>
+                    <div class="brand-badge">
+                        <span class="badge-title">FATUR</span>
+                        <span class="badge-sub">JADUL & HIGH-FIDELITY</span>
+                    </div>
+                </div>
 
+                <!-- Baris Tengah Kiri: Toggle Switches (Extra Volume & Bass) -->
+                <div class="switches-row">
+                    <div class="switch-group">
+                        <label>EXTRA VOLUME</label>
+                        <button id="btnBoost" class="toggle-switch-handle"><span></span></button>
+                    </div>
+                    <div class="switch-group">
+                        <label>BASS ENHANCE</label>
+                        <button id="btnBass" class="toggle-switch-handle"><span></span></button>
+                    </div>
+                </div>
+
+                <!-- Baris Bawah Kiri: Playlist Card Fisik -->
+                <div class="playlist-card">
+                    <div class="card-title">PLAYLIST CARD</div>
+                    <ul id="playlistView" class="playlist-list">
+                        <li class="empty-msg">1. TIDAK ADA LAGU</li>
+                        <li>2. KLIK FOLDER DI KANAN</li>
+                    </ul>
                 </div>
             </div>
-        </div>
 
-        <!-- Panel Controls Audio -->
-        <div class="booster-panel">
-            <div class="booster-title">🔊FATUR AUDIO JADUL & HIGH-FIDELITY</div>
-            <div class="booster-controls">
-                <div class="booster-item">
-                    <label>EXTRA VOLUME</label>
-                    <button id="btnBoost" class="toggle-btn">OFF</button>
-                </div>
-                <div class="booster-item">
-                    <label>BASS ENHANCE</label>
-                    <button id="btnBass" class="toggle-btn">OFF</button>
+            <!-- Kolom Tengah: Deck Kaset Transparan -->
+            <div class="center-deck-panel">
+                <div class="cassette-deck">
+                    <div class="deck-screw tl"></div><div class="deck-screw tr"></div>
+                    <div class="deck-screw bl"></div><div class="deck-screw br"></div>
+                    
+                    <div class="real-cassette-frame" id="reelsArea">
+                        <div class="hub-overlay left-hub-pos" id="leftReel">
+                            <div class="spoke s1"></div><div class="spoke s2"></div><div class="spoke s3"></div>
+                        </div>
+                        <div class="hub-overlay right-hub-pos" id="rightReel">
+                            <div class="spoke s1"></div><div class="spoke s2"></div><div class="spoke s3"></div>
+                        </div>
+                        <div class="label-overlay">
+                            <div class="ticker-wrapper">
+                                <div class="clean-running-title" id="songTitle">TIDAK ADA LAGU (PILIH FILE)</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- Kolom Kanan: Kenop-Kenop Besar & Label Fungsinya -->
+            <div class="right-knobs-panel">
+                <div class="knob-control-item">
+                    <span class="knob-label-top">PLAY NAME</span>
+                    <div class="metal-knob med-knob">
+                        <div class="knob-cap"></div>
+                    </div>
+                </div>
+                <div class="knob-control-item">
+                    <span class="knob-label-top">BASS ENHANCE</span>
+                    <div class="metal-knob med-knob">
+                        <div class="knob-cap"></div>
+                    </div>
+                </div>
+                <div class="knob-control-item">
+                    <span class="knob-label-top">NEXT / FOLDER</span>
+                    <div class="metal-knob large-knob">
+                        <div class="knob-cap"></div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
-        <!-- Physical Buttons -->
+        <!-- Tombol Fisik Pemutar di Bawah (Mechanical Tape Buttons) -->
         <div class="button-panel">
-            <label class="btn-tape btn-open" for="fileInput">
-                <span>📁 FOLDER</span>
-            </label>
-            <button id="btnPrev" class="btn-tape">
-                <span>⏮ PREV</span>
-            </button>
-            <button id="btnPlay" class="btn-tape">
-                <span>▶ PLAY</span>
-            </button>
-            <button id="btnPause" class="btn-tape">
-                <span>⏸ PAUSE</span>
-            </button>
-            <button id="btnNext" class="btn-tape">
-                <span>⏭ NEXT</span>
-            </button>
+            <span class="btn-caption">PREV</span>
+            <span class="btn-caption">PREV</span>
+            <span class="btn-caption">PLAY</span>
+            <span class="btn-caption">PAUSE</span>
+            <span class="btn-caption">NEXT</span>
+            <span class="btn-caption">FOLDER</span>
+        </div>
+        <div class="button-row-physical">
+            <button id="btnPrev" class="btn-mech">⏮</button>
+            <button id="btnPrev" class="btn-mech">⏪</button>
+            <button id="btnPlay" class="btn-mech">▶</button>
+            <button id="btnPause" class="btn-mech">⏸</button>
+            <button id="btnNext" class="btn-mech">⏭</button>
+            <label class="btn-mech btn-folder-label" for="fileInput">📁</label>
         </div>
 
-        <!-- Playlist Card -->
-        <div class="playlist-card">
-            <div class="card-title">MEMORI LOKAL • DAFTAR LAGU</div>
-            <ul id="playlistView" class="playlist-list">
-                <li class="empty-msg">Klik [📁 FOLDER] untuk memilih lagu dari HP kamu.</li>
-            </ul>
-        </div>
+        <!-- Baut Sudut Bawah -->
+        <div class="screw bottom-left"></div>
+        <div class="screw bottom-right"></div>
     </div>
 
-    <!-- Hidden Input & Engine -->
     <input type="file" id="fileInput" accept="audio/*" multiple style="display: none;">
     <audio id="audioEngine"></audio>
 
     <script src="script.js"></script>
 </body>
 </html>
-
