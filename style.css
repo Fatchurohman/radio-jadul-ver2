@@ -330,21 +330,43 @@ body {
     justify-content: center;
 }
 
-/* Hub / Roda Kaset dengan overflow hidden untuk memotong garis ruji */
+//* Hub / Roda Kaset */
 .hub-overlay {
-    width: 32px;
-    height: 32px;
+    width: 28px;
+    height: 28px;
     border: 2px solid #ccc;
     border-radius: 50%;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0,0,0,0.8);
+    background: rgba(0,0,0,0.9);
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden; 
 }
+
+/* Posisi Roda Kiri dan Kanan yang Benar-benar Pas di Lubang Kaset */
+.left-hub-pos { left: 34%; }
+.right-hub-pos { right: 33%; }
+
+.hub-overlay.spinning {
+    animation: spinReel 2s linear infinite;
+}
+
+@keyframes spinReel {
+    0% { transform: translateY(-50%) rotate(0deg); }
+    100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+.spoke {
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background: #ccc;
+}
+.s2 { transform: rotate(60deg); }
+.s3 { transform: rotate(120deg); }
 
 .left-hub-pos { left: 36%; }
 .right-hub-pos { right: 36%; }
