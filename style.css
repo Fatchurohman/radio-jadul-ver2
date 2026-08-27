@@ -346,9 +346,9 @@ body {
     overflow: hidden;
 }
 
-/* Posisi Roda Kiri dan Kanan */
-.left-hub-pos { left: 41.5%; }
-.right-hub-pos { right: 41.5%; }
+/* Posisi Roda Kiri digeser ke kiri (nilai left diperkecil), Roda Kanan digeser ke kanan (nilai right diperkecil) */
+.left-hub-pos { left: 28%; }
+.right-hub-pos { right: 28%; }
 
 /* Animasi Putar Langsung Aktif Saat Kelas .spinning Masuk */
 .hub-overlay.spinning {
