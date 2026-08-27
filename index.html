@@ -11,17 +11,14 @@
 <body>
 
     <div class="vintage-player">
-        <!-- Baut Sudut Atas -->
         <div class="screw top-left"></div>
         <div class="screw top-right"></div>
 
-        <!-- Status Bar Atas -->
         <div class="top-bar">
             <span class="brand-tag">✦ ANALOG AUDIO SYSTEM ✦</span>
             <span class="dev-tag">DEV: <i>fatur62</i></span>
         </div>
 
-        <!-- Bagian Atas: Radio Display & Kenop Kanan Atas -->
         <div class="header-section">
             <div class="radio-display" id="freqDisplay">
                 <div class="dial-scale">
@@ -38,12 +35,8 @@
             </div>
         </div>
 
-        <!-- Bagian Tengah Utama (Split Kiri & Kanan) -->
         <div class="main-body-grid">
-            
-            <!-- Kolom Kiri: VU Meter, Label, Saklar, Playlist -->
             <div class="left-control-panel">
-                <!-- Baris Atas Kiri: VU Meter & Brand Plate -->
                 <div class="left-top-row">
                     <div class="vu-meter">
                         <div class="vu-dial">
@@ -56,7 +49,6 @@
                     </div>
                 </div>
 
-                <!-- Baris Tengah Kiri: Toggle Switches (Extra Volume & Bass) -->
                 <div class="switches-row">
                     <div class="switch-group">
                         <label>EXTRA VOLUME</label>
@@ -68,7 +60,6 @@
                     </div>
                 </div>
 
-                <!-- Baris Bawah Kiri: Playlist Card Fisik -->
                 <div class="playlist-card">
                     <div class="card-title">PLAYLIST CARD</div>
                     <ul id="playlistView" class="playlist-list">
@@ -78,53 +69,68 @@
                 </div>
             </div>
 
-            <!-- Kolom Tengah: Deck Kaset Transparan -->
+            <!-- Bagian Deck Kaset Murni CSS -->
             <div class="center-deck-panel">
                 <div class="cassette-deck">
                     <div class="deck-screw tl"></div><div class="deck-screw tr"></div>
                     <div class="deck-screw bl"></div><div class="deck-screw br"></div>
                     
-                    <div class="real-cassette-frame" id="reelsArea">
-                        <div class="hub-overlay left-hub-pos" id="leftReel">
-                            <div class="spoke s1"></div><div class="spoke s2"></div><div class="spoke s3"></div>
-                        </div>
-                        <div class="hub-overlay right-hub-pos" id="rightReel">
-                            <div class="spoke s1"></div><div class="spoke s2"></div><div class="spoke s3"></div>
-                        </div>
-                        <div class="label-overlay">
+                    <!-- Kaset Vintase Rendered CSS -->
+                    <div class="css-cassette-body" id="reelsArea">
+                        <!-- Pita Magnetik Kiri & Kanan -->
+                        <div class="tape-reel-left"></div>
+                        <div class="tape-reel-right"></div>
+
+                        <!-- Label Stiker Putih & Running Text -->
+                        <div class="css-label-sticker">
                             <div class="ticker-wrapper">
                                 <div class="clean-running-title" id="songTitle">TIDAK ADA LAGU (PILIH FILE)</div>
                             </div>
                         </div>
+
+                        <!-- Tulisan fatur62 Transparan di Bodi Kaset -->
+                        <div class="css-watermark">fatur62</div>
+
+                        <!-- Jendela Transparan Tempat Roda -->
+                        <div class="css-transparent-window">
+                            <!-- Roda Gerigi Kiri -->
+                            <div class="hub-overlay left-hub-pos" id="leftReel">
+                                <div class="spoke s1"></div>
+                                <div class="spoke s2"></div>
+                                <div class="spoke s3"></div>
+                            </div>
+                            <!-- Roda Gerigi Kanan -->
+                            <div class="hub-overlay right-hub-pos" id="rightReel">
+                                <div class="spoke s1"></div>
+                                <div class="spoke s2"></div>
+                                <div class="spoke s3"></div>
+                            </div>
+                        </div>
+
+                        <!-- Detail Bagian Bawah Kaset (Gigi Pengunci) -->
+                        <div class="css-cassette-bottom-teeth">
+                            <div class="tooth"></div><div class="tooth"></div><div class="tooth"></div><div class="tooth"></div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Kolom Kanan: Kenop-Kenop Besar & Label Fungsinya -->
             <div class="right-knobs-panel">
                 <div class="knob-control-item">
                     <span class="knob-label-top">PLAY NAME</span>
-                    <div class="metal-knob med-knob">
-                        <div class="knob-cap"></div>
-                    </div>
+                    <div class="metal-knob med-knob"><div class="knob-cap"></div></div>
                 </div>
                 <div class="knob-control-item">
                     <span class="knob-label-top">BASS ENHANCE</span>
-                    <div class="metal-knob med-knob">
-                        <div class="knob-cap"></div>
-                    </div>
+                    <div class="metal-knob med-knob"><div class="knob-cap"></div></div>
                 </div>
                 <div class="knob-control-item">
                     <span class="knob-label-top">NEXT / FOLDER</span>
-                    <div class="metal-knob large-knob">
-                        <div class="knob-cap"></div>
-                    </div>
+                    <div class="metal-knob large-knob"><div class="knob-cap"></div></div>
                 </div>
             </div>
-
         </div>
 
-        <!-- Tombol Fisik Pemutar di Bawah (Mechanical Tape Buttons) -->
         <div class="button-panel">
             <span class="btn-caption">PREV</span>
             <span class="btn-caption">PREV</span>
@@ -142,7 +148,6 @@
             <label class="btn-mech btn-folder-label" for="fileInput">📁</label>
         </div>
 
-        <!-- Baut Sudut Bawah -->
         <div class="screw bottom-left"></div>
         <div class="screw bottom-right"></div>
     </div>
