@@ -339,27 +339,9 @@ body {
     justify-content: center;
 }
 
-/* Hub / Roda Gerigi Kaset */
-.hub-overlay {
-    width: 34px;
-    height: 34px;
-    border: 3px solid #ccc;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.left-hub-pos { left: 29%; }
-.right-hub-pos { right: 29%; }
-
-.hub-overlay.spinning {
-    animation: spinReel 2s linear infinite;
-}
+/* Posisi Roda Kaset Presisi di Tengah Lubang Kaset */
+.left-hub-pos { left: 36%; }
+.right-hub-pos { right: 36%; }
 
 @keyframes spinReel {
     0% { transform: translateY(-50%) rotate(0deg); }
