@@ -330,7 +330,7 @@ body {
     justify-content: center;
 }
 
-//* Hub / Roda Kaset */
+/* Hub / Roda Kaset */
 .hub-overlay {
     width: 28px;
     height: 28px;
@@ -338,7 +338,6 @@ body {
     border-radius: 50%;
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
     background: rgba(0,0,0,0.9);
     display: flex;
     align-items: center;
@@ -346,9 +345,15 @@ body {
     overflow: hidden; 
 }
 
-/* Posisi Roda Kiri dan Kanan yang Benar-benar Pas di Lubang Kaset */
-.left-hub-pos { left: 34%; }
-.right-hub-pos { right: 33%; }
+/* Posisi Roda Kiri dan Kanan yang Presisi */
+.left-hub-pos { 
+    left: 36%; 
+    transform: translateY(-50%);
+}
+.right-hub-pos { 
+    right: 36%; 
+    transform: translateY(-50%);
+}
 
 .hub-overlay.spinning {
     animation: spinReel 2s linear infinite;
@@ -367,6 +372,7 @@ body {
 }
 .s2 { transform: rotate(60deg); }
 .s3 { transform: rotate(120deg); }
+
 
 .left-hub-pos { left: 36%; }
 .right-hub-pos { right: 36%; }
