@@ -329,7 +329,6 @@ body {
     align-items: center;
     justify-content: center;
 }
-
 /* Hub / Roda Kaset */
 .hub-overlay {
     width: 28px;
@@ -345,7 +344,7 @@ body {
     overflow: hidden; 
 }
 
-/* Posisi Roda Kiri dan Kanan yang Presisi */
+/* Posisi Tetap di Tengah Vertikal */
 .left-hub-pos { 
     left: 36%; 
     transform: translateY(-50%);
@@ -355,11 +354,21 @@ body {
     transform: translateY(-50%);
 }
 
-.hub-overlay.spinning {
-    animation: spinReel 2s linear infinite;
+/* Animasi Putar Tanpa Mengganggu Posisi Center */
+.left-hub-pos.spinning {
+    animation: spinReelLeft 2s linear infinite;
 }
 
-@keyframes spinReel {
+.right-hub-pos.spinning {
+    animation: spinReelRight 2s linear infinite;
+}
+
+@keyframes spinReelLeft {
+    0% { transform: translateY(-50%) rotate(0deg); }
+    100% { transform: translateY(-50%) rotate(360deg); }
+}
+
+@keyframes spinReelRight {
     0% { transform: translateY(-50%) rotate(0deg); }
     100% { transform: translateY(-50%) rotate(360deg); }
 }
