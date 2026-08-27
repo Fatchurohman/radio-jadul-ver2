@@ -329,64 +329,34 @@ body {
     align-items: center;
     justify-content: center;
 }
-/* Hub / Roda Kaset */
+
+/* Pembungkus Luar: Mengunci Posisi Pas di Lubang Kaset */
 .hub-overlay {
     width: 28px;
     height: 28px;
-    border: 2px solid #ccc;
-    border-radius: 50%;
     position: absolute;
     top: 50%;
-    background: rgba(0,0,0,0.9);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden; 
-}
-
-/* Posisi Tetap di Tengah Vertikal */
-.left-hub-pos { 
-    left: 36%; 
     transform: translateY(-50%);
 }
-.right-hub-pos { 
-    right: 36%; 
-    transform: translateY(-50%);
-}
-
-/* Animasi Putar Tanpa Mengganggu Posisi Center */
-.left-hub-pos.spinning {
-    animation: spinReelLeft 2s linear infinite;
-}
-
-.right-hub-pos.spinning {
-    animation: spinReelRight 2s linear infinite;
-}
-
-@keyframes spinReelLeft {
-    0% { transform: translateY(-50%) rotate(0deg); }
-    100% { transform: translateY(-50%) rotate(360deg); }
-}
-
-@keyframes spinReelRight {
-    0% { transform: translateY(-50%) rotate(0deg); }
-    100% { transform: translateY(-50%) rotate(360deg); }
-}
-
-.spoke {
-    position: absolute;
-    width: 100%;
-    height: 2px;
-    background: #ccc;
-}
-.s2 { transform: rotate(60deg); }
-.s3 { transform: rotate(120deg); }
-
 
 .left-hub-pos { left: 36%; }
 .right-hub-pos { right: 36%; }
 
-.hub-overlay.spinning {
+/* Bagian Roda Dalam yang Berputar */
+.reel-wheel {
+    width: 100%;
+    height: 100%;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+/* Animasi Putar Murni di Dalam Elemen Anak */
+.hub-overlay.spinning .reel-wheel {
     animation: spinReel 2s linear infinite;
 }
 
